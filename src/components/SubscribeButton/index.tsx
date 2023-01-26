@@ -1,6 +1,8 @@
 import { useSession, signIn } from 'next-auth/react'
 import Error from 'next/error';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useLanguage } from '../../hooks/useLanguage';
 import { api } from '../../services/api';
 import { getStripeJs } from '../../services/stripe-js';
 
@@ -11,6 +13,9 @@ interface SubscribeButtonProps {
 }
 
 export function SubscribeButton({ priceId }: SubscribeButtonProps) {
+  
+  const [ isEnglish ] = useLanguage()
+  
   const {data: session} = useSession()
   const router = useRouter()
 
@@ -49,7 +54,7 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
       className={styles.subscribeButton}
       onClick={handleSubscribe}
     >
-      Subscribe now
+      {isEnglish ? "Subscribe now" : "Inscreva-se agora"}
     </button>
   )
 }

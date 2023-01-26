@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { SubscribeButton } from '../components/SubscribeButton/index';
 
 import styles from './home.module.scss';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface HomeProps {
   product: {
@@ -16,7 +17,10 @@ interface HomeProps {
 
 //Obrigatóriamente precisa ter o export default
 export default function Home({product}: HomeProps) {
+  const [ isEnglish ] = useLanguage()
 
+  console.log("TESTE", isEnglish)
+  
   return (
     <>
      {/* A tag Head pode ser colocada em qualquer lugar da aplicação */}
@@ -29,11 +33,22 @@ export default function Home({product}: HomeProps) {
           <span>👏 Hey, Welcome</span>
           <h1>News about the <span>React</span> world.</h1>
 
-          <p>
-            Get acess to all the publications <br />
-            <span>for {product.amount} month</span>
-          </p>
-
+          { isEnglish
+            ?
+              (
+                <p>
+                  Get acess to all the publications <br />
+                  <span>for {product.amount} month</span>
+                </p>
+              )
+            :
+                (
+                  <p>
+                    Tenha acesso a todas as postagens <br />
+                    <span>pelo preço de {product.amount} por mês</span>
+                  </p>
+                )
+          }
           <SubscribeButton priceId={product.priceId}/>
 
         </section>
