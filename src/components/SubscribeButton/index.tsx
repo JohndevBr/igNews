@@ -1,7 +1,6 @@
 import { useSession, signIn } from 'next-auth/react'
 import Error from 'next/error';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { useLanguage } from '../../hooks/useLanguage';
 import { api } from '../../services/api';
 import { getStripeJs } from '../../services/stripe-js';
