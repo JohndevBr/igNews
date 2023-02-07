@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 
 export function Header(){
 
-  const [ isEnglish, handleSelectEnglish, handleSelectPtBR ] = useLanguage()
+  const { language, selectLanguage } = useLanguage()
 
   return (
     <header className={styles.headerContainer}>
@@ -14,7 +14,7 @@ export function Header(){
         <img src="/images/logo.svg" alt="Ig.news" />
         <nav>
           <ActiveLink activeClassName={styles.active} href="/">
-            <a>Home</a>
+            <a>{ language === 'en' ? "Home" : "Início" }</a>
           </ActiveLink>
           <ActiveLink activeClassName={styles.active} href="/posts">
             <a>Posts</a>
@@ -25,17 +25,17 @@ export function Header(){
         <div className={styles.flagsCountries}>
           <div 
             className={styles.flagContent}
-            onClick={handleSelectPtBR as () => boolean}
+            onClick={() => selectLanguage("pt")}
           >
             <img src="/images/brazil.png" alt="Brazil Flag" />
-            <span className={ !isEnglish ? styles.flagActive : ''}/>
+            <span className={ language === "pt" ? styles.flagActive : ''}/>
           </div>
           <div 
             className={styles.flagContent}
-            onClick={handleSelectEnglish as () => boolean}
+            onClick={() => selectLanguage("en")}
           >
-            <img src="/images/united-states.png" alt="Brazil Flag" />
-            <span className={ isEnglish ? styles.flagActive : ''}/>
+            <img src="/images/united-states.png" alt="United States Flag" />
+            <span className={ language === "en" ? styles.flagActive : ''}/>
           </div>
         </div>
       </div>

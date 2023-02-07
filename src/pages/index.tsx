@@ -1,10 +1,9 @@
 import { GetStaticProps } from 'next';
 import { stripe } from '../services/stripe';
-
+import { useContext } from 'react'
 //Serve para colocar o título dinâmico, por página
 import Head from 'next/head';
 import { SubscribeButton } from '../components/SubscribeButton/index';
-
 import styles from './home.module.scss';
 import { useLanguage } from '../hooks/useLanguage';
 
@@ -17,23 +16,26 @@ interface HomeProps {
 
 //Obrigatóriamente precisa ter o export default
 export default function Home({product}: HomeProps) {
-  const [ isEnglish ] = useLanguage()
+  const { language } = useLanguage()
 
-  console.log("TESTE", isEnglish)
-  
   return (
     <>
      {/* A tag Head pode ser colocada em qualquer lugar da aplicação */}
       <Head>
-        <title>Home IgNews </title>
+        <title>{language === 'en' ? 'Home' : "Início"}  IgNews </title>
       </Head>
       
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
-          <span>👏 Hey, Welcome</span>
-          <h1>News about the <span>React</span> world.</h1>
+          <span>👏 Hey, {language === 'en' ? 'Welcome' : "Bem vindo"} </span>
+          {language === 'en' 
+            ?
+            <h1>News about the <span>React</span> world.</h1>
+            :
+            <h1>Novidades sobre o mundo <span>React</span>.</h1>
+          }
 
-          { isEnglish
+          { language === "en"
             ?
               (
                 <p>

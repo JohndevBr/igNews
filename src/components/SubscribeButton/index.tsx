@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { useSession, signIn } from 'next-auth/react'
 import Error from 'next/error';
 import { useRouter } from 'next/router';
@@ -13,7 +14,7 @@ interface SubscribeButtonProps {
 
 export function SubscribeButton({ priceId }: SubscribeButtonProps) {
   
-  const [ isEnglish ] = useLanguage()
+  const { language } = useLanguage()
   
   const {data: session} = useSession()
   const router = useRouter()
@@ -53,7 +54,7 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
       className={styles.subscribeButton}
       onClick={handleSubscribe}
     >
-      {isEnglish ? "Subscribe now" : "Inscreva-se agora"}
+      {language === "en" ? "Subscribe now" : "Inscreva-se agora"}
     </button>
   )
 }
