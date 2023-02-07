@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { useSession, signIn } from 'next-auth/react'
 import Error from 'next/error';
 import { useRouter } from 'next/router';
@@ -16,7 +15,7 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
   
   const { language } = useLanguage()
   
-  const {data: session} = useSession()
+  const {session}: any = useSession()
   const router = useRouter()
 
   async function handleSubscribe(){

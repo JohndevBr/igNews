@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Link from "next/link";
 import Router from "next/router";
 import { RichText } from "prismic-dom";
-import { useEffect } from "react";
+import { useEffect } from 'react';
 import { getPrismicClient } from "../../../services/prismic";
 
 import styles from '../post.module.scss';
@@ -19,7 +19,7 @@ interface PostPreviewProps {
 }
 
 export default function PostPreview({ post }: PostPreviewProps){
-  const {data: session} = useSession()
+  const { data: session }: any = useSession()
 
   useEffect(() => {
     if (session?.activeSubscription) {

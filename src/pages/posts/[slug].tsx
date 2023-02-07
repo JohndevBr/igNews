@@ -38,7 +38,7 @@ export default function Post({ post }: PostProps){
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const session = await getSession({ req })
+  const session: any = await getSession({ req })
   const { slug }: any = params;
 
   if( !session?.activeSubscription ) {
@@ -54,7 +54,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req, params }) =>
 
   const response = await prismic.getByUID<any>("publication", String(slug), {})
   
-
   const post = {
     slug,
     title: RichText.asText(response.data.title),
