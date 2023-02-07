@@ -1,6 +1,5 @@
 import { GetStaticProps } from 'next';
-import { stripe } from '../services/stripe';
-import { useContext } from 'react'
+import  stripe from '../services/stripe';
 //Serve para colocar o título dinâmico, por página
 import Head from 'next/head';
 import { SubscribeButton } from '../components/SubscribeButton/index';

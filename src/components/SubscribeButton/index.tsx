@@ -15,10 +15,12 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
   
   const { language } = useLanguage()
   
-  const {session}: any = useSession()
+  const {data: session}: any = useSession()
   const router = useRouter()
 
   async function handleSubscribe(){
+    console.log("FUNCAO CHAMADA", session)
+
     if (!session) {
       signIn('github');
       return;
@@ -31,6 +33,7 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
 
     // Chamada da rota de criação da checkout session
 
+    console.log("PASSEI AQUI")
     try {
       const response = await api.post("/subscribe")
 
