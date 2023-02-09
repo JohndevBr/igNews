@@ -1,10 +1,12 @@
 import { FaGithub } from 'react-icons/fa';
 import { FiX } from 'react-icons/fi';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { useLanguage } from '../../hooks/useLanguage';
 
 import styles from './styles.module.scss'
 
 export function SignInButton(){
+  const { language } = useLanguage()
   const {data: session}: any = useSession()
 
   return session ? (
@@ -24,7 +26,7 @@ export function SignInButton(){
       onClick={ () => signIn('github') }
     >
       <FaGithub color="#eba417"/>
-      Sign in with GitHub
+      {language === "en" ? "Sign in with GitHub" : "Entrar com o GitHub"}
     </button>
   )
     
