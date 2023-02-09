@@ -6,6 +6,8 @@ import Router from "next/router";
 import { RichText } from "prismic-dom";
 import { useEffect } from 'react';
 import { getPrismicClient } from "../../../services/prismic";
+import { useLanguage } from '../../../hooks/useLanguage';
+
 
 import styles from '../post.module.scss';
 
@@ -19,6 +21,7 @@ interface PostPreviewProps {
 }
 
 export default function PostPreview({ post }: PostPreviewProps){
+  const { language } = useLanguage()
   const { data: session }: any = useSession()
 
   useEffect(() => {
@@ -45,7 +48,7 @@ export default function PostPreview({ post }: PostPreviewProps){
           <div className={styles.continueReading}>
             Wanna Continue Reading?
             <Link href="/">
-             <a >Subscribe now 🤗</a> 
+             <a >{language === "en" ? "Subscribe now" : "Inscreva-se agora" } 🤗</a> 
             </Link>
           </div>
         </article>

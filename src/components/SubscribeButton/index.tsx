@@ -19,7 +19,6 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
   const router = useRouter()
 
   async function handleSubscribe(){
-    console.log("FUNCAO CHAMADA", session)
 
     if (!session) {
       signIn('github');
@@ -33,7 +32,6 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
 
     // Chamada da rota de criação da checkout session
 
-    console.log("PASSEI AQUI")
     try {
       const response = await api.post("/subscribe")
 
