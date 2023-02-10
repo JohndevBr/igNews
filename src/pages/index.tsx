@@ -26,7 +26,7 @@ export default function Home({product}: HomeProps) {
       
       <main className={styles.contentContainer}>
         <section className={styles.hero}>
-          <span>👏 Hey, {language === 'en' ? 'Welcome' : "Bem vindo"} </span>
+          <span>👏 Hey, {language === 'en' ? 'Welcome' : "Bem-vindo"} </span>
           {language === 'en' 
             ?
             <h1>News about the <span>React</span> world.</h1>
