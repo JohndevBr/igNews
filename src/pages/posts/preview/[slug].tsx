@@ -46,7 +46,7 @@ export default function PostPreview({ post }: PostPreviewProps){
           />
 
           <div className={styles.continueReading}>
-            Wanna Continue Reading?
+          {language === "en" ? "Wanna Continue Reading" : "Deseja continuar lendo"}?
             <Link href="/">
              <a >{language === "en" ? "Subscribe now" : "Inscreva-se agora" } 🤗</a> 
             </Link>

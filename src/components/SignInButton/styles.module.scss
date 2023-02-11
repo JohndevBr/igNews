@@ -12,6 +12,10 @@
   color: var(--white);
   font-weight: bold;
 
+  @media screen and (max-width: 450px) {
+    padding: 0 0.5rem;
+  }
+
   svg {
     width: 20px;
     height: 20px;
@@ -19,10 +23,16 @@
 
   svg:first-child {
     margin-right: 1rem;
+    @media screen and (max-width: 450px) {
+      margin-right: 0.5rem;
+    }
   }
 
   svg.closeIcon {
     margin-left: 1rem;
+    @media screen and (max-width: 450px) {
+      margin-left: 0.5rem;
+    }
   }
 
   transition: filter 0.2s;
